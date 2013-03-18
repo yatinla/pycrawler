@@ -9,7 +9,6 @@ def crawl(n,key):
       if isinstance(x,dict):
          for k,v in x.iteritems():
             if k == key:
-               print 'found it'
                yield v
                ''' Caller is expected to break its loop at 
                    this point....
@@ -28,7 +27,6 @@ def crawl2(n,key):
          if isinstance(x,dict):
             for k,v in x.iteritems():
                if k == key:
-                  print 'found it'
                   yield v
                   ''' Caller is expected to break its loop at 
                       this point....
@@ -43,7 +41,6 @@ def crawl2(n,key):
          if isinstance(i,dict):
             p.append(i)
          else:
-            print 'found it: ', i
             return i
 
       if len(p) == 0:
@@ -68,7 +65,6 @@ def crawl3(n,path):
          if isinstance(x,dict):
             for k,v in x.iteritems():
                if k == key:
-                  print 'found it'
                   yield v
                   ''' Caller is expected to break its loop at 
                       this point....
@@ -104,7 +100,6 @@ def test_crawl(a, key):
          if isinstance(i,dict):
             p.append(i)
          else:
-            print 'found it with crawl v1: ', i
             return i
 
       if len(p) == 0:
@@ -117,7 +112,11 @@ if __name__ == '__main__':
 
    ''' Here there are two keys named 'f' and crawl3 will find the one in sub3 only '''
 
-   a = [{'foo':{'sub1':{'a':1, 'f':'wrong', 'c':3}, 'sub2':{'d':4, 'e':5, 'sub3':{'f':'right', 'g':7}}, 'sub4':{'h':8, 'i':9}}}]
+   ''' This one is complex and still works '''
+   a = [ 'top1', 'top2', {'sub0':['t11', 't12'], 'foo':{'sub1':{'a':1, 'f':'wrong', 'c':3}, 'sub2':{'d':4, 'e':5, 'sub3':{'f':'right', 'g':7}}, 'sub4':{'h':8, 'i':9}}}, 'top3']
+  
+   ''' But this one fails presumably because the nested list doesn't get iterated over ''' 
+   a_fail = [ 'top1', 'top2', [{'sub0':['t11', 't12'], 'foo':{'sub1':{'a':1, 'f':'wrong', 'c':3}, 'sub2':{'d':4, 'e':5, 'sub3':{'f':'right', 'g':7}}, 'sub4':{'h':8, 'i':9}}},'sub00'], 'top3']
 
    print 'Test crawl v1'
    v = test_crawl(a,'f')
