@@ -5,10 +5,8 @@ def crawl(n,key):
        nested dictionaries without knowing the structure
        to find the value of a particular key.  
    '''
-   print 'n is ', n
    for x in n:
       if isinstance(x,dict):
-         print 'x is ', x
          for k,v in x.iteritems():
             if k == key:
                print 'found it'
@@ -26,11 +24,8 @@ def crawl2(n,key):
    '''
    
    def crawler(n,key):
-      print 'crawler n is ', n
       for x in n:
-         print 'crawler x is ', x
          if isinstance(x,dict):
-            print 'x is ', x
             for k,v in x.iteritems():
                if k == key:
                   print 'found it'
@@ -69,11 +64,8 @@ def crawl3(n,path):
        but it must appear under the path 'foo'/'bar'
    '''
    def crawler(n,key):
-      print 'crawler n is ', n
       for x in n:
-         print 'crawler x is ', x
          if isinstance(x,dict):
-            print 'x is ', x
             for k,v in x.iteritems():
                if k == key:
                   print 'found it'
