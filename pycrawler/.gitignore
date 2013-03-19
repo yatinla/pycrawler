@@ -1,0 +1,13 @@
+*.log
+*.pot
+*.pyc
+local_settings.py
+*.secret
+*.key
+*.tag
+*.swp
+*.xml
+dist
+build
+*.html*
+
